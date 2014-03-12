@@ -321,6 +321,8 @@ class ApplicationContent(models.Model):
 
                     for k, v in self.custom_fields.items():
                         self.fields[k] = v
+                        if k in self.instance.parameters:
+                            self.fields[k].initial = self.instance.parameters[k]
 
 
             def clean(self, *args, **kwargs):
